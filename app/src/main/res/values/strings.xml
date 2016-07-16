@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">ImagesGal</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+    <string name="pref_auto_play_category_title">Autoplay</string>
+    <string name="pref_auto_play_description">Enable</string>
+    <string name="pref_title_auto_play_frequency">Frequency</string>
+    <string name="prefs_show_only_favorite_title">Show only favorite</string>
+    <string name="pref_title_show_order">Show order</string>
+    <string name="pref_title_animation">Type of animation</string>
+    <string name="settings_menu_button_name">Settings</string>
+
+    <string name="prefs_show_order_key" translatable="false">show-order</string>
+    <string name="prefs_animation_key" translatable="false">animation</string>
+    <string name="prefs_only_favorite_key" translatable="false">favorite</string>
+    <string name="prefs_autoplay_key" translatable="false">autoplay</string>
+    <string name="prefs_autoplay_frequency_key" translatable="false">autoplay_frequency</string>
+
+    <string-array name="prefs_auto_play_frequency_titles">
+        <item>1 second</item>
+        <item>2 seconds</item>
+        <item>3 seconds</item>
+        <item>4 seconds</item>
+        <item>5 seconds</item>
+    </string-array>
+
+    <string-array name="prefs_auto_play_frequency_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="prefs_show_order_titles">
+        <item>By order</item>
+        <item>Random order</item>
+    </string-array>
+
+    <string-array name="prefs_show_order_values">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="prefs_animation_titles">
+        <item>Animation 1</item>
+        <item>Animation 2</item>
+    </string-array>
+
+    <string-array name="prefs_animation_values">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+</resources>

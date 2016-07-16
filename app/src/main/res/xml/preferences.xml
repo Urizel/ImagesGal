@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/prefs_only_favorite_key"
+        android:title="@string/prefs_show_only_favorite_title"/>
+
+    <ListPreference
+        android:defaultValue="1"
+        android:entries="@array/prefs_show_order_titles"
+        android:entryValues="@array/prefs_show_order_values"
+        android:key="@string/prefs_show_order_key"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_title_show_order"/>
+
+    <ListPreference
+        android:defaultValue="1"
+        android:entries="@array/prefs_animation_titles"
+        android:entryValues="@array/prefs_animation_values"
+        android:key="@string/prefs_animation_key"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_title_animation"/>
+
+    <PreferenceCategory
+        android:title="@string/pref_auto_play_category_title">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="@string/prefs_autoplay_key"
+            android:title="@string/pref_auto_play_description"/>
+
+        <ListPreference
+            android:defaultValue="3"
+            android:entries="@array/prefs_auto_play_frequency_titles"
+            android:entryValues="@array/prefs_auto_play_frequency_values"
+            android:key="@string/prefs_autoplay_frequency_key"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="@string/pref_title_auto_play_frequency"
+            android:dependency="@string/prefs_autoplay_key"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
