@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements ImageFragment.OnI
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // XXX No UI injection lib
         setContentView(R.layout.activity_main);
 
         actionBar = getSupportActionBar();
@@ -91,6 +92,9 @@ public class MainActivity extends AppCompatActivity implements ImageFragment.OnI
 
         boolean showOnlyFavorite = sp.getBoolean(getString(R.string.prefs_only_favorite_key), false);
         if (showOnlyFavorite) {
+            // XXX Abstraction leak: direct access into model
+            // XXX Synchronous data access from UI thread
+            // XXX Magic number
             imageList = Image.findWithQuery(Image.class, "Select * from Image where favorite = ?",
                     "1");
             mPagerAdapter.notifyDataSetChanged();
@@ -101,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements ImageFragment.OnI
             }
         }
 
+        // XXX String type for int values
         String showOrder = sp.getString(getString(R.string.prefs_show_order_key), "1");
 
         //Make random show
@@ -110,6 +115,15 @@ public class MainActivity extends AppCompatActivity implements ImageFragment.OnI
         }
 
         if (showOnlyFavorite) {
+            // XXX No data set change notification
+            // XXX Could have used iterator
+//            Iterator<Image> iterator = imageList.iterator();
+//            while (iterator.hasNext()) {
+//                if (!iterator.next().isFavorite()) {
+//                    iterator.remove();
+//                }
+//            }
+
             for (int i = (imageList.size() - 1); i >= 0; i--){
                 if (!imageList.get(i).isFavorite()){
                     imageList.remove(i);
@@ -135,6 +149,7 @@ public class MainActivity extends AppCompatActivity implements ImageFragment.OnI
     @Override
     protected void onPause() {
         super.onPause();
+        // XX Why not instance state?
         //Save current show image position
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = sp.edit();
@@ -204,6 +219,7 @@ public class MainActivity extends AppCompatActivity implements ImageFragment.OnI
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        // XXX Magic number
                         if (currentPosition <= 4) {
                             pager.setCurrentItem(currentPosition);
                             currentPosition++;
@@ -221,6 +237,7 @@ public class MainActivity extends AppCompatActivity implements ImageFragment.OnI
     private void loadFromJSON() {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
+        // XXX Synchronous data access from UI thread
         String jsonFile = loadJSONFromAsset();
         Image[] images = gson.fromJson(jsonFile, Image[].class);
         //Make Images database with Sugar ORM

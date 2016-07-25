@@ -176,6 +176,7 @@ public class ImageFragment extends Fragment implements View.OnClickListener {
     }
 
     //interface for activity and  fragment interaction
+    // XXX strange name
     public interface OnImageClickEventListener {
         //stops timer fot autoplay in activity if exist
         public void onTimerPause();

@@ -24,6 +24,7 @@
             android:layout_alignParentTop="true"
             android:layout_margin="5dp" />
 
+        <!--XXX non-resource color-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
